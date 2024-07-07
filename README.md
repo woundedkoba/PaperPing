@@ -21,6 +21,8 @@ Configuration:
 You can configure almost everything of the plugin, here is the current configuration file.                                 
 Config file: https://github.com/woundedkoba/PaperPing/blob/main/config.yml
 
+PaperPing 0.0.1 was created because Minecraft 1.20.5, 1.20.6, and 1.21 broke how xDefcon's SpigotPing 3.0 was acquiring the Minecraft Version. Starting with Minecraft 1.20.5 Java 21 is required. I assume this to be what caused the breaking issue.
+
 All credit to xDefcon for all original work. I only take credit for having updated this plugin for MC 1.20.6 & 1.21 and other items listed below.
 
 Without going into full detail changes include but are not limited to:
