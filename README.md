@@ -3,7 +3,7 @@ A fork of xDefcon's SpigotPing 3.0 Plugin
 
 Want to see your in-game ping? With this plugin you can do this by typing /ping or by pressing TAB
 
-SpigotPing is a Bukkit/Spigot/Paper plugin that allows you and your users to check their in-game ping with a simple command, /ping. The output message is customizable with prefix and colors by config. In addition to this you can enable sounds, and show players' ping in the Tab List (prefix/suffix).
+PaperPing is a Paper plugin that allows you and your users to check their in-game ping with a simple command, /ping. The output message is customizable with prefix and colors by config. In addition to this you can enable sounds, and show players' ping in the Tab List (prefix/suffix).
 
 ![image](https://github.com/woundedkoba/PaperPing/assets/174161751/67ca95af-87e4-454b-9cb8-7df685832ef0)
 
