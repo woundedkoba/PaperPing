@@ -5,7 +5,7 @@ Want to see your in-game ping? With this plugin you can do this by typing /ping 
 
 PaperPing is a Paper plugin that allows you and your users to check their in-game ping with a simple command, /ping. The output message is customizable with prefix and colors by config. In addition to this you can enable sounds, and show players' ping in the Tab List (prefix/suffix).
 
-![image](https://github.com/user-attachments/assets/1c558d14-da29-4af8-b6a6-21394714207c)
+<img src=https://github.com/user-attachments/assets/1c558d14-da29-4af8-b6a6-21394714207c width="549" height="130" alt="Description of image">
 
 Commands & Permissions:                                  
 Permissions are checked only if you set "permission-system.enabled" in the config to true.
