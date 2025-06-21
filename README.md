@@ -5,7 +5,7 @@ Want to see your in-game ping? With this plugin you can do this by typing /ping 
 
 PaperPing is a Paper plugin that allows you and your users to check their in-game ping with a simple command, /ping. The output message is customizable with prefix and colors by config. In addition to this you can enable sounds, and show players' ping in the Tab List (prefix/suffix).
 
-![image](https://github.com/woundedkoba/PaperPing/assets/174161751/67ca95af-87e4-454b-9cb8-7df685832ef0)
+![image](https://github.com/user-attachments/assets/1c558d14-da29-4af8-b6a6-21394714207c)
 
 Commands & Permissions:                                  
 Permissions are checked only if you set "permission-system.enabled" in the config to true.
@@ -19,7 +19,7 @@ This is the default ping message:
 
 Configuration:                               
 You can configure almost everything of the plugin, here is the current configuration file.                                 
-Config file: https://github.com/woundedkoba/PaperPing/blob/main/config.yml
+Config file: https://github.com/woundedkoba/PaperPing/blob/main/src/main/resources/config.yml
 
 PaperPing 0.0.1 was created because Minecraft 1.20.5, 1.20.6, and 1.21 broke how xDefcon's SpigotPing 3.0 was acquiring the Minecraft Version. Starting with Minecraft 1.20.5 Java 21 is required. I assume this to be what caused the breaking issue.
 
