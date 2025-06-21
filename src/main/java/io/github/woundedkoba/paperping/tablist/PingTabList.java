@@ -3,34 +3,41 @@ package io.github.woundedkoba.paperping.tablist;
 
 import io.github.woundedkoba.paperping.PaperPing;
 import io.github.woundedkoba.paperping.utils.PingUtil;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-@SuppressWarnings("deprecation")
 public class PingTabList extends BukkitRunnable {
-  private PaperPing plugin;
-  
+  private final PaperPing plugin;
+
   public PingTabList(PaperPing plugin) {
     this.plugin = plugin;
   }
 
-public void run() {
+  public void run() {
     for (Player player : this.plugin.getServer().getOnlinePlayers()) {
-      String currentName;
-      if (this.plugin.getConfig().getBoolean("tablist.show-real-name")) {
-        currentName = player.getName();
-      } else {
-        currentName = player.getDisplayName();
-      } 
+      var nameComponent = this.plugin.getConfig().getBoolean("tablist.show-real-name")
+              ? net.kyori.adventure.text.Component.text(player.getName())
+              : player.displayName();
+
       String prefix = this.plugin.getConfig().getString("tablist.prefix");
-      if (!prefix.equals(""))
-        player.setPlayerListName(ChatColor.translateAlternateColorCodes('&', prefix
-              .replace("%ping%", "" + PingUtil.getPing(player))) + " " + currentName); 
       String suffix = this.plugin.getConfig().getString("tablist.suffix");
-      if (!suffix.equals(""))
-        player.setPlayerListName(currentName + " " + ChatColor.translateAlternateColorCodes('&', suffix
-              .replace("%ping%", "" + PingUtil.getPing(player)))); 
-    } 
+      assert prefix != null && suffix != null;
+
+      var prefixComponent = prefix.isEmpty() ? net.kyori.adventure.text.Component.empty()
+              : LegacyComponentSerializer.legacy('&').deserialize(prefix.replace("%ping%", "" + PingUtil.getPing(player)));
+      var suffixComponent = suffix.isEmpty() ? net.kyori.adventure.text.Component.empty()
+              : LegacyComponentSerializer.legacy('&').deserialize(suffix.replace("%ping%", "" + PingUtil.getPing(player)));
+
+      // Compose final tab name: prefix + (space) + name + (space) + suffix
+      var finalName = net.kyori.adventure.text.Component.empty()
+              .append(prefixComponent)
+              .append(prefixComponent == net.kyori.adventure.text.Component.empty() ? net.kyori.adventure.text.Component.empty() : net.kyori.adventure.text.Component.space())
+              .append(nameComponent)
+              .append(suffixComponent == net.kyori.adventure.text.Component.empty() ? net.kyori.adventure.text.Component.empty() : net.kyori.adventure.text.Component.space())
+              .append(suffixComponent);
+
+      player.playerListName(finalName);
+    }
   }
 }

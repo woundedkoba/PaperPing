@@ -3,9 +3,8 @@ package io.github.woundedkoba.paperping;
 import io.github.woundedkoba.paperping.commands.PingCommand;
 import io.github.woundedkoba.paperping.commands.PingReloadCommand;
 import io.github.woundedkoba.paperping.tablist.PingTabList;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import java.util.Objects;
 
 public class PaperPing extends JavaPlugin {
   private static PaperPing instance;
@@ -17,15 +16,15 @@ public class PaperPing extends JavaPlugin {
   public void onEnable() {
     instance = this;
     saveDefaultConfig();
-    getCommand("ping").setExecutor((CommandExecutor)new PingCommand(this));
-    getCommand("pingreload").setExecutor((CommandExecutor)new PingReloadCommand(this));
+    Objects.requireNonNull(getCommand("ping")).setExecutor(new PingCommand(this));
+    Objects.requireNonNull(getCommand("pingreload")).setExecutor(new PingReloadCommand(this));
     registerTasks();
   }
   
   public void onDisable() {
     instance = null;
     getLogger().info("Cancelling tasks...");
-    getServer().getScheduler().cancelTasks((Plugin)this);
+    getServer().getScheduler().cancelTasks(this);
   }
   
   private void registerTasks() {
@@ -36,15 +35,15 @@ public class PaperPing extends JavaPlugin {
     if (!getConfig().getBoolean("tablist.enabled")) {
       getLogger().info("The tablist is disabled, the ping will not be shown as a prefix. You can change this option in the config.");
     } else {
-      Long delay = Long.valueOf(getConfig().getLong("tablist.update-delay"));
-      (new PingTabList(this)).runTaskTimerAsynchronously((Plugin)this, delay.longValue() * 20L, delay.longValue() * 20L);
+      long delay = getConfig().getLong("tablist.update-delay");
+      (new PingTabList(this)).runTaskTimerAsynchronously(this, delay * 20L, delay * 20L);
       getLogger().info("TabList is enabled, task added with a delay of " + delay + " second/s.");
     } 
   }
   
   public void reload() {
     getLogger().info("Reloading the plugin...");
-    getServer().getScheduler().cancelTasks((Plugin)this);
+    getServer().getScheduler().cancelTasks(this);
     reloadConfig();
     registerTasks();
     getLogger().info("Plugin reloaded.");

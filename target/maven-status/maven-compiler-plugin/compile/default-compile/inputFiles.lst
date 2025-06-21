@@ -1,6 +1,6 @@
-/home/didymus/Documents/Dev/MC-Plugins/PaperPing/src/main/java/io/github/woundedkoba/paperping/PaperPing.java
-/home/didymus/Documents/Dev/MC-Plugins/PaperPing/src/main/java/io/github/woundedkoba/paperping/commands/PingCommand.java
-/home/didymus/Documents/Dev/MC-Plugins/PaperPing/src/main/java/io/github/woundedkoba/paperping/commands/PingReloadCommand.java
-/home/didymus/Documents/Dev/MC-Plugins/PaperPing/src/main/java/io/github/woundedkoba/paperping/tablist/PingTabList.java
-/home/didymus/Documents/Dev/MC-Plugins/PaperPing/src/main/java/io/github/woundedkoba/paperping/utils/PingUtil.java
-/home/didymus/Documents/Dev/MC-Plugins/PaperPing/src/main/java/io/github/woundedkoba/paperping/utils/SoundUtil.java
+/home/woundedkoba/Development/GitHub/PaperPing/src/main/java/io/github/woundedkoba/paperping/PaperPing.java
+/home/woundedkoba/Development/GitHub/PaperPing/src/main/java/io/github/woundedkoba/paperping/commands/PingCommand.java
+/home/woundedkoba/Development/GitHub/PaperPing/src/main/java/io/github/woundedkoba/paperping/commands/PingReloadCommand.java
+/home/woundedkoba/Development/GitHub/PaperPing/src/main/java/io/github/woundedkoba/paperping/tablist/PingTabList.java
+/home/woundedkoba/Development/GitHub/PaperPing/src/main/java/io/github/woundedkoba/paperping/utils/PingUtil.java
+/home/woundedkoba/Development/GitHub/PaperPing/src/main/java/io/github/woundedkoba/paperping/utils/SoundUtil.java

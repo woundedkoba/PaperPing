@@ -5,52 +5,54 @@ import io.github.woundedkoba.paperping.utils.PingUtil;
 import io.github.woundedkoba.paperping.utils.SoundUtil;
 import org.bukkit.Bukkit;
 import net.kyori.adventure.text.format.NamedTextColor;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+import java.util.Objects;
 
-@SuppressWarnings("deprecation")
 public class PingCommand implements CommandExecutor {
-  private PaperPing plugin;
+  private final PaperPing plugin;
   
   public PingCommand(PaperPing plugin) {
     this.plugin = plugin;
   }
   
-  public boolean onCommand(CommandSender sender, Command c, String label, String[] args) {
-    if (!(sender instanceof Player)) {
+  public boolean onCommand(@NotNull CommandSender sender, @NotNull Command c, @NotNull String label, String @NotNull [] args) {
+    if (!(sender instanceof Player p)) {
       this.plugin.getLogger().info(NamedTextColor.RED + "This command is only executable as a Player.");
       return true;
-    } 
-    Player p = (Player)sender;
+    }
     if (args.length == 0) {
       if (!hasPerms(p, "PaperPing.ping")) {
         String noPerm = this.plugin.getConfig().getString("permission-system.no-perm-message");
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', noPerm));
+        assert noPerm != null;
+        p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(noPerm));
         return true;
       } 
       String ping = "" + PingUtil.getPing(p);
-      String customMex = this.plugin.getConfig().getString("ping-command.ping-message").replaceAll("%ping%", ping);
-      p.sendMessage(ChatColor.translateAlternateColorCodes('&', customMex));
+      String customMex = Objects.requireNonNull(this.plugin.getConfig().getString("ping-command.ping-message")).replaceAll("%ping%", ping);
+      p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(customMex));
     } else {
       if (!hasPerms(p, "PaperPing.ping.others")) {
         String noPerm = this.plugin.getConfig().getString("others-ping.not-allowed-message");
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', noPerm));
+        assert noPerm != null;
+        p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(noPerm));
         return true;
       } 
-      String target = (args.length > 0) ? args[0] : null;
+      String target = args[0];
       Player targetP = Bukkit.getPlayer(target);
       if (targetP == null) {
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.plugin
-              .getConfig().getString("others-ping.player-not-found")));
+        String notFoundMsg = Objects.requireNonNull(this.plugin.getConfig().getString("others-ping.player-not-found"));
+        p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(notFoundMsg));
         return true;
-      } 
-      p.sendMessage(ChatColor.translateAlternateColorCodes('&', this.plugin
-            .getConfig().getString("ping-command.ping-target-message")
-            .replace("%ping%", "" + PingUtil.getPing(targetP))
-            .replace("%target%", targetP.getName())));
+      }
+      String pingTargetMsg = Objects.requireNonNull(this.plugin.getConfig().getString("ping-command.ping-target-message"))
+              .replace("%ping%", "" + PingUtil.getPing(targetP))
+              .replace("%target%", targetP.getName());
+      p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(pingTargetMsg));
     } 
     if (this.plugin.getConfig().getBoolean("sound-manager.enabled"))
       SoundUtil.playSound(p, this.plugin.getConfig().getString("sound-manager.sound-type")); 

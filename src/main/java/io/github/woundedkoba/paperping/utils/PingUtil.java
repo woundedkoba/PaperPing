@@ -21,8 +21,8 @@ public class PingUtil {
       p = Bukkit.getPlayer(p.getUniqueId()); 
     
     try {
-      int ping = p.getPing();
-      return ping;
+      assert p != null;
+      return p.getPing();
     } catch (Exception e) {
       e.printStackTrace();
       return 0;

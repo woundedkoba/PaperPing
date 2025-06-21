@@ -2,22 +2,25 @@ package io.github.woundedkoba.paperping.commands;
 
 import io.github.woundedkoba.paperping.PaperPing;
 import net.kyori.adventure.text.format.NamedTextColor;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("deprecation")
+import java.util.Objects;
+
 public class PingReloadCommand implements CommandExecutor {
-  private PaperPing plugin;
+  private final PaperPing plugin;
   
   public PingReloadCommand(PaperPing plugin) {
     this.plugin = plugin;
   }
   
-  public boolean onCommand(CommandSender sender, Command c, String label, String[] args) {
+  public boolean onCommand(CommandSender sender, @NotNull Command c, @NotNull String label, String @NotNull [] args) {
     if (!sender.hasPermission("PaperPing.reload")) {
-      sender.sendMessage(ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("permission-system.no-perm-message")));
+      String noPerm = Objects.requireNonNull(this.plugin.getConfig().getString("permission-system.no-perm-message"));
+      sender.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(noPerm));
       return true;
     } 
     this.plugin.reload();

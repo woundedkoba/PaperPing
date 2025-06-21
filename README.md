@@ -25,15 +25,7 @@ PaperPing 0.0.1 was created because Minecraft 1.20.5, 1.20.6, and 1.21 broke how
 
 All credit to xDefcon for all original work. I only take credit for having updated this plugin for MC 1.20.6 & 1.21 and other items listed below.
 
-Without going into full detail changes include but are not limited to:
-- Upgraded to Java 21 (xDefcon's SpigotPing 3.0 uses Java 8)
-- Upgraded to Paper API 1.21-R0.1-SNAPSHOT (xDefcon's SpigotPing 3.0 used Spigot API 1.17-R0.1-SNAPSHOT)
-- Upgraded to Maven Compiler Plugin 3.13.0
-- Removed JSON.simple 1.1.1 (com.googlecode.json-simple)
-- Removed the use of bStats and Metrics
-- Implemented the use of the Adventure Platform API (to replace the use of ChatColor from the Spigot API as this is deprecated for the Paper API) ; forgot to replace the use of ChatColor.translateAlternateColorCodes(), will do so in the next release
-- Added some instances of @SuppressWarnings("deprecation") due to my use of the Paper API versus the Spigot API ; will resolve the deprecations in the next release
-- BUGFIX: Re-wrote how PingUtil acquires the Minecraft Version (This was causing the plugin to fail to work and output errors in the server console for MC 1.20.5, 1.20.6, and 1.21)
+See docs > Change Log.md for Changes made in each version.
 
 
 
