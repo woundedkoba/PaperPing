@@ -1,11 +1,12 @@
 name: PaperPing
+version: '0.1.0'
 main: io.github.woundedkoba.paperping.PaperPing
-author: WoundedKoba
-version: "0.0.2"
-api-version: "1.21.5"
-description: "PaperPing a simple and customizable plugin to show your ping."
+api-version: '1.21.7'
+authors: [xDefcon, woundedkoba]
+description: >
+  PaperPing is a simple and customizable plugin to show your ping.
 commands:
     ping:
-      description: The main command for SpigotPing.
+      description: The main command for PaperPing.
     pingreload:
       description: Reloads the plugin.

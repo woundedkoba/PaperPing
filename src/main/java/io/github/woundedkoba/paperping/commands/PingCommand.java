@@ -2,7 +2,6 @@ package io.github.woundedkoba.paperping.commands;
 
 import io.github.woundedkoba.paperping.PaperPing;
 import io.github.woundedkoba.paperping.utils.PingUtil;
-import io.github.woundedkoba.paperping.utils.SoundUtil;
 import org.bukkit.Bukkit;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
@@ -26,7 +25,7 @@ public class PingCommand implements CommandExecutor {
       return true;
     }
     if (args.length == 0) {
-      if (!hasPerms(p, "PaperPing.ping")) {
+      if (lacksPerm(p, "PaperPing.ping")) {
         String noPerm = this.plugin.getConfig().getString("permission-system.no-perm-message");
         assert noPerm != null;
         p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(noPerm));
@@ -36,7 +35,7 @@ public class PingCommand implements CommandExecutor {
       String customMex = Objects.requireNonNull(this.plugin.getConfig().getString("ping-command.ping-message")).replaceAll("%ping%", ping);
       p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(customMex));
     } else {
-      if (!hasPerms(p, "PaperPing.ping.others")) {
+      if (lacksPerm(p, "PaperPing.ping.others")) {
         String noPerm = this.plugin.getConfig().getString("others-ping.not-allowed-message");
         assert noPerm != null;
         p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(noPerm));
@@ -53,13 +52,11 @@ public class PingCommand implements CommandExecutor {
               .replace("%ping%", "" + PingUtil.getPing(targetP))
               .replace("%target%", targetP.getName());
       p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(pingTargetMsg));
-    } 
-    if (this.plugin.getConfig().getBoolean("sound-manager.enabled"))
-      SoundUtil.playSound(p, this.plugin.getConfig().getString("sound-manager.sound-type")); 
+    }
     return true;
   }
-  
-  private boolean hasPerms(Player p, String perm) {
-    return (!this.plugin.getConfig().getBoolean("permission-system.enabled") || p.hasPermission(perm));
+
+  private boolean lacksPerm(Player p, String perm) {
+    return this.plugin.getConfig().getBoolean("permission-system.enabled") && !p.hasPermission(perm);
   }
 }

@@ -1,7 +1,16 @@
 PaperPing Change Log
 -
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PaperPing v0.1.0
+- Upgraded to Paper API 1.21.7-R0.1-SNAPSHOT
+- Removed Target Directory
+- Removed SoundUtil
+- Resolved 'Calls to boolean method 'hasPerms()' are always inverted'
+- Replaced calls to 'printStackTrace()' with use of java.util.logging.Logger
+- Updated plugin.yml and config.yml
+- Updated pom.xml
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PaperPing v0.0.2
 - Added documentation to include: Change Log, Known Issues, and Planned Updates
 - Upgraded to Paper API 1.21.5-R0.1-SNAPSHOT

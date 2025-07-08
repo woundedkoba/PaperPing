@@ -3,6 +3,7 @@ package io.github.woundedkoba.paperping;
 import io.github.woundedkoba.paperping.commands.PingCommand;
 import io.github.woundedkoba.paperping.commands.PingReloadCommand;
 import io.github.woundedkoba.paperping.tablist.PingTabList;
+import io.github.woundedkoba.paperping.utils.PingUtil;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Objects;
 
@@ -15,6 +16,7 @@ public class PaperPing extends JavaPlugin {
   
   public void onEnable() {
     instance = this;
+    PingUtil.setLogger(this.getLogger());
     saveDefaultConfig();
     Objects.requireNonNull(getCommand("ping")).setExecutor(new PingCommand(this));
     Objects.requireNonNull(getCommand("pingreload")).setExecutor(new PingReloadCommand(this));
