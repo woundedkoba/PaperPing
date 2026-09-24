@@ -2,7 +2,7 @@ PaperPing Known Issues
 -
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-PaperPing v0.0.3
+PaperPing v0.1.1
 - The plugin is intentionally limited to Paper; Spigot and Bukkit-only servers are not supported.
 - The sound-manager configuration is retained, but the current command implementation does not play a sound.
 - `/ping <username>` can only resolve online players.

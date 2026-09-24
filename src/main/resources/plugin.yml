@@ -1,5 +1,5 @@
 name: PaperPing
-version: '0.0.3'
+version: '0.1.1'
 main: io.github.woundedkoba.paperping.PaperPing
 api-version: '26.3'
 authors: [xDefcon, woundedkoba]

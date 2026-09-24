@@ -1,7 +1,7 @@
 PaperPing Change Log
 -
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-PaperPing v0.0.3
+PaperPing v0.1.1
 - Upgraded project compatibility to Paper 26.3, Minecraft 26.x, and Java 25.
 - Updated Maven compiler, clean, resources, JAR, shade, and Surefire plugins.
 - Disabled Shade JAR minimization for Java 25 compatibility.
