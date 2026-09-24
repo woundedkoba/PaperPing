@@ -1,7 +1,7 @@
 name: PaperPing
-version: '0.1.0'
+version: '0.0.3'
 main: io.github.woundedkoba.paperping.PaperPing
-api-version: '1.21.7'
+api-version: '26.3'
 authors: [xDefcon, woundedkoba]
 description: >
   PaperPing is a simple and customizable plugin to show your ping.

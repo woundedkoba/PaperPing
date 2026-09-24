@@ -8,7 +8,9 @@ PaperPing allows you and your users to check their in-game ping with a simple co
 
 <img src=https://github.com/user-attachments/assets/1c558d14-da29-4af8-b6a6-21394714207c width="300" height="75" alt="Description of image">  
 
-PaperPing was created because Minecraft 1.20.5, 1.20.6, and 1.21 broke how xDefcon's SpigotPing 3.0 was acquiring the Minecraft Version. Starting with Minecraft 1.20.5 Java 21 is required. I assume this to be what caused the breaking issue.
+PaperPing targets Paper 26.3 and Minecraft 26.x. Java 25 is required by current Paper servers. PaperPing uses Paper's `Player#getPing()` API and does not depend on CraftBukkit package names or version-specific internals.
+
+PaperPing only supports Paper servers. It has no inventory screens, inventory click modes, Minepacks integration, or other inventory-related behavior. Those limitations do not apply because the plugin only provides commands and tab-list formatting.
 
 ##### Commands & Permissions:                                  
 Permissions are checked only if you set "permission-system.enabled" in the config to true.
@@ -31,20 +33,16 @@ A version for MC 1.20.6 was made but never commit to this repo.
 
 #### Credit and Contribution
 All credit to xDefcon for all original work.  
-I only take credit for having updated this plugin for 1.21 and other items listed in 'docs > Change Log.md'.  
+I only take credit for having updated this plugin for Paper and Minecraft versions including 1.20.5, 1.20.6, 1.21.x, and 26.x, along with the other items listed in 'docs > Change Log.md'.
 
 #### License:
 SpigotPing by xDefcon is licensed under the [Gnu GPL v3](http://www.gnu.org/licenses/gpl-3.0.html)  
-PaperPing adhers to the same license.
+PaperPing adheres to the same license.
 
 #### Resources:  
 https://www.spigotmc.org/resources/spigotping-added-in-tablist-ping.24419/
 https://github.com/xDefcon/spigot-ping
 https://github.com/xDefcon/spigot-ping/blob/master/src/main/resources/config.yml
 https://github.com/woundedkoba/PaperPing/blob/main/src/main/resources/config.yml
-
-
-
-
 
 

@@ -1,6 +1,19 @@
 PaperPing Change Log
 -
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PaperPing v0.0.3
+- Upgraded project compatibility to Paper 26.3, Minecraft 26.x, and Java 25.
+- Updated Maven compiler, clean, resources, JAR, shade, and Surefire plugins.
+- Disabled Shade JAR minimization for Java 25 compatibility.
+- Replaced version-specific CraftBukkit package parsing with Paper's `Player#getPing()` API.
+- Confirmed runtime failures are reported through the plugin logger rather than stack-trace printing.
+- Honored the `others-ping.show-other-players-ping` configuration option.
+- Clarified supported inventories, click modes, Minepacks limitations, and licensing in README.md.
+- Updated Change Log, Planned Updates, and Known Issues documentation.
+- Refreshed code-only graphify output and ignored `graphify-out/`.
+- Ignored generated Maven `target/` artifacts.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PaperPing v0.1.0
 - Upgraded to Paper API 1.21.7-R0.1-SNAPSHOT
 - Removed Target Directory

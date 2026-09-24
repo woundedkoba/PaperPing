@@ -3,7 +3,6 @@ package io.github.woundedkoba.paperping.commands;
 import io.github.woundedkoba.paperping.PaperPing;
 import io.github.woundedkoba.paperping.utils.PingUtil;
 import org.bukkit.Bukkit;
-import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,7 +20,7 @@ public class PingCommand implements CommandExecutor {
   
   public boolean onCommand(@NotNull CommandSender sender, @NotNull Command c, @NotNull String label, String @NotNull [] args) {
     if (!(sender instanceof Player p)) {
-      this.plugin.getLogger().info(NamedTextColor.RED + "This command is only executable as a Player.");
+      this.plugin.getLogger().warning("The /ping command can only be executed by a player.");
       return true;
     }
     if (args.length == 0) {
@@ -34,7 +33,12 @@ public class PingCommand implements CommandExecutor {
       String ping = "" + PingUtil.getPing(p);
       String customMex = Objects.requireNonNull(this.plugin.getConfig().getString("ping-command.ping-message")).replaceAll("%ping%", ping);
       p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(customMex));
-    } else {
+      } else {
+      if (!this.plugin.getConfig().getBoolean("others-ping.show-other-players-ping", true)) {
+        p.sendMessage(LegacyComponentSerializer.legacy('&').deserialize(
+                Objects.requireNonNull(this.plugin.getConfig().getString("others-ping.not-allowed-message"))));
+        return true;
+      }
       if (lacksPerm(p, "PaperPing.ping.others")) {
         String noPerm = this.plugin.getConfig().getString("others-ping.not-allowed-message");
         assert noPerm != null;
